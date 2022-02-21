@@ -1,6 +1,21 @@
-let a = 2;
-let b = 3;
-let c = 1.125;
+const readline = require('readline');
+const { stdin: input, stdout: output } = require('process');
+const rl = readline.createInterface({ input, output });
+
+async function setNumberQuestion(text) {
+    while (true) {
+        let ans = await new Promise((resolve, reject) => {
+            rl.question(text, (answer) => {
+                resolve(answer);
+            });
+        });
+        if (!isNaN(parseInt(ans))) {
+            return parseInt(ans);
+        }
+        console.log(`Error. Expected a valid real number, got ${ans} instead`);
+    }
+    
+}
 
 function getRoots(a, b, c) {
     const numeratorRoot = Math.sqrt((b * b) - 4 * a * c);
@@ -14,16 +29,28 @@ function getRoots(a, b, c) {
     return [root1, root2];
 }
 
-function main() {
-    if (a == 0) {
-        console.log('Error. a cannot be 0');
-        return;
+async function main() {
+    try {
+        
+        const a = await setNumberQuestion('a = ');
+        const b = await setNumberQuestion('b = ');
+        const c = await setNumberQuestion('c = ');
+        
+        rl.close();
+
+        if (a == 0) {
+            console.log('Error. a cannot be 0');
+            return;
+        }
+        let roots = getRoots(a, b, c)
+        console.log(`Equation is: (${a}) x^2 + (${b}) x + (${c}) = 0`);
+        console.log(`There are ${roots.length} roots`);
+        for (let i = 0; i < roots.length; i++) {
+            console.log(`x${(i+1)} = ${roots[i].toFixed(4)}`);
+        }
     }
-    let roots = getRoots(a, b, c)
-    console.log(`Equation is: (${a}) x^2 + (${b}) x + (${c}) = 0`);
-    console.log(`There are ${roots.length} roots`);
-    for (let i = 0; i < roots.length; i++) {
-        console.log(`x${(i+1)} = ${roots[i].toFixed(4)}`);
+    catch(error) {
+        console.error(error);
     }
 }
 
