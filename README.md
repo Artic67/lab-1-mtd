@@ -35,7 +35,8 @@ File must be with `.txt` extension and have a strusture like:
 A\sB\sC\n
 
 For example:
-1\s0\s0\n
+1 0 0
+
 ```
 
 Link to the revert commit: [Revert commit](https://github.com/Artic67/lab-1-mtd/commit/738172df833e4a05dd1b2a2ba0fafc5472a79f73)
