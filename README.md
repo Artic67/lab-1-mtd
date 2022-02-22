@@ -38,7 +38,7 @@ For example:
 1\s0\s0\n
 ```
 
-Link to the revert commit: []()
+Link to the revert commit: [Revert commit](https://github.com/Artic67/lab-1-mtd/commit/738172df833e4a05dd1b2a2ba0fafc5472a79f73)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
